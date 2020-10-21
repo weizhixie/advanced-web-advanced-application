@@ -14,7 +14,10 @@ class SnackController extends Controller
      */
     public function index()
     {
-        //
+        $snack = Snack::all();
+
+        //return view('snack.index', ['snack' => $snack]);
+        return view('snack.index', compact('snack'));
     }
 
     /**
@@ -46,7 +49,7 @@ class SnackController extends Controller
      */
     public function show(Snack $snack)
     {
-        //
+        return view('snack.show', compact('snack'));
     }
 
     /**

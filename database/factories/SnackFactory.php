@@ -21,8 +21,11 @@ class SnackFactory extends Factory
      */
     public function definition()
     {
+        $snacks = ['Doritos', 'Oreos','Pringles','Reese\'s Peanut Butter Cups',
+            'Goldfish', 'Cheetos', 'M&M\'s','Cheez-Its','Haribo gummies','Fritos',
+        ];
         return [
-            'name' => $this->faker->name,
+            'name' => $snacks[array_rand($snacks)],
             'popularity' => $this->faker->numberBetween(0,10),
             'description' => $this->faker->sentence,
         ];

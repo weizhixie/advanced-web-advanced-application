@@ -27,26 +27,27 @@ class SnackController extends Controller
      */
     public function create()
     {
-        //
+        return view('snack.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => 'required|min:2|max:32',
+        ]);
+
+        $attributes = $request->all(
+            'name',
+            'description',
+        );
+
+        $attributes['popularity'] = 0;
+
+        $snack = Snack::create($attributes);
+
+        return redirect($snack->path);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Snack  $snack
-     * @return \Illuminate\Http\Response
-     */
     public function show(Snack $snack)
     {
         return view('snack.show', compact('snack'));

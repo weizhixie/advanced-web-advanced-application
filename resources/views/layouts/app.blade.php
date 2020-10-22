@@ -45,7 +45,9 @@
             </div>
         </header>
 
+        @yield('sidebar')
         @yield('content')
+
     </div>
 </body>
 </html>

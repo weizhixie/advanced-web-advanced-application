@@ -15,3 +15,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/snack',[SnackController::class, 'index']);
 Route::get('/snack/{snack}', [SnackController::class, 'show']);
 
+Route::get('/add_snack', [SnackController::class, 'create']);
+Route::post('/add_snack', [SnackController::class, 'store']);
+
+

@@ -13,7 +13,7 @@ class CreateSnacksTable extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('popularity');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <main class="sm:container sm:mx-auto sm:mt-10">
-        <div class="w-full sm:px-6">
-            <ul>
-            @foreach($snack as $s)
-                <li>
-                    <a href="{{ $s->path }}">{{$s->name}}</a>
-                </li>
-            @endforeach
-            </ul>
-        </div>
-    </main>
+    <div class="flex flex-wrap">
+        @foreach ($snack as $s)
+            <!--<a href="{{ $s->path }}">{{$s->name}}</a>-->
+            <div class="w-1/3 pr-2">
+                @include ('_snack')
+            </div>
+        @endforeach
+    </div>
+
+    {{ $snack->links() }}
 @endsection

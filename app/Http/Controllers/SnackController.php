@@ -7,24 +7,14 @@ use Illuminate\Http\Request;
 
 class SnackController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $snack = Snack::all();
+        $snack = Snack::paginate(6);
 
-        //return view('snack.index', ['snack' => $snack]);
         return view('snack.index', compact('snack'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('snack.create');
@@ -76,14 +66,10 @@ class SnackController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Snack  $snack
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Snack $snack)
     {
-        //
+        $snack->delete();
+
+        return redirect()->route('index');
     }
 }

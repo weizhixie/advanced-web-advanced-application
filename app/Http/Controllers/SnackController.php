@@ -43,27 +43,28 @@ class SnackController extends Controller
         return view('snack.show', compact('snack'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Snack  $snack
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Snack $snack)
     {
-        //
+        return view('snack.edit', compact('snack'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Snack  $snack
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Snack $snack)
     {
-        //
+        request()->validate([
+            'name' => 'required|min:2|max:32',
+            'popularity' => 'numeric|min:0|max:10',
+        ]);
+
+        $attributes = $request->all(
+            'name',
+            'popularity',
+            'description',
+            );
+
+        $snack->update($attributes);
+
+        return redirect()->route('index');
     }
 
     public function destroy(Snack $snack)

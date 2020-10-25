@@ -35,7 +35,7 @@
         <div class="flex flex-wrap mt-8">
             <div class="w-full">
                 <button class="nav-button" type="submit"><i class="fas fa-paw mr-2"></i>Add Snack</button>
-                <a href="/snack">
+                <a href="/">
                     <button class="nav-button" type="button"><i class="fas fa-paw mr-2"></i>Cancel</button>
                 </a>
             </div>

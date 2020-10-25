@@ -18,7 +18,7 @@
                 </p>
 
                 <p class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                    <a href="{{ $s->path('edit') }}">Edit</a>
+                    <a href="{{ $s->path . '/edit' }}">Edit</a>
                 </p>
 
                 <form class="inline" method="post" action="{{ $s->path }}">

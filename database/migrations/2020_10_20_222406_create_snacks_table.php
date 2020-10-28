@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSnacksTable extends Migration
 {
-
     public function up()
     {
         Schema::create('snacks', function (Blueprint $table) {

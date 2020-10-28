@@ -8,11 +8,6 @@ use Illuminate\Database\Seeder;
 
 class SnackSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         Snack::factory(20)->create();

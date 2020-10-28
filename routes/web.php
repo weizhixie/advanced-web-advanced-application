@@ -4,8 +4,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SnackController;
 use Illuminate\Support\Facades\Route;
 
-
-
 Auth::routes();
 
 Route::get('/', [SnackController::class, 'index'])->name('index');

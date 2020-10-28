@@ -10,7 +10,7 @@ class SnackController extends Controller
 
     public function index()
     {
-        $snack = Snack::paginate(6);
+        $snack = Snack::query () -> orderByDesc ('popularity') ->paginate(6);
 
         return view('snack.index', compact('snack'));
     }
@@ -24,10 +24,12 @@ class SnackController extends Controller
     {
         request()->validate([
             'name' => 'required|min:2|max:32',
+            'popularity' => 'numeric|min:0|max:10',
         ]);
 
         $attributes = $request->all(
             'name',
+            'popularity',
             'description',
         );
 

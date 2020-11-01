@@ -9,13 +9,12 @@
 @endsection
 
 @section('content')
-    <div class="flex flex-wrap m-3">
-        @foreach ($snack as $s)
-            <div class="w-1/3 pr-2">
-                @include ('_snack')
-            </div>
-        @endforeach
+    <div class="m-3">
+        @include('snack_')
     </div>
 
+    <span class="flex justify-center">
     {{ $snack->links() }}
+    </span>
 @endsection
+

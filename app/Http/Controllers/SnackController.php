@@ -33,8 +33,6 @@ class SnackController extends Controller
             'description',
         );
 
-        $attributes['popularity'] = 0;
-
         $snack = Snack::create($attributes);
 
         return redirect($snack->path);

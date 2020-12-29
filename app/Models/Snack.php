@@ -10,9 +10,10 @@ class Snack extends Model
     use HasFactory;
 
     protected $fillable = [
-      'name',
-      'popularity',
-      'description',
+        'name',
+        'popularity',
+        'description',
+        'snackImage',
     ];
 
     public function getPathAttribute()

@@ -23,6 +23,8 @@ The following settings are required:
 
 `$ php artisan migrate:fresh --seed`
 
+`$ php artisan storage:link` to create the symbolic to make stored files accessible from web
+
 ## Startup
 
 `$ php artisan serve`

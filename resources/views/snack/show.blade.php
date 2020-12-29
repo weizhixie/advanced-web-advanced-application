@@ -24,6 +24,10 @@
                 Snack description:
             </h2>
             {{ $snack -> description }}
+            <h2 class="font-bold mb-4">
+                Snack Image:
+            </h2>
+            <img src="{{ asset('/storage/images/'.$snack->snackImage) }}">
         </div>
     </div>
 @endsection

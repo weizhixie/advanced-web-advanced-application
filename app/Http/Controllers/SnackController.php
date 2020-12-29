@@ -11,7 +11,6 @@ class SnackController extends Controller
     public function index()
     {
         $snack = Snack::query () -> orderByDesc ('popularity') ->paginate(6);
-
         return view('snack.index', compact('snack'));
     }
 
@@ -25,16 +24,30 @@ class SnackController extends Controller
         request()->validate([
             'name' => 'required|min:2|max:32',
             'popularity' => 'numeric|min:0|max:10',
+            'description' => 'max:2000',
+            'snackImage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $attributes = $request->all(
-            'name',
-            'popularity',
-            'description',
-        );
-
-        $snack = Snack::create($attributes);
-
+        if ($request->hasFile('snackImage'))
+        {
+            $request->file('snackImage')->store('images','public');
+            $snack = new Snack([
+                'name' => $request->get('name'),
+                'popularity'=> $request->get('popularity'),
+                'description'=> $request->get('description'),
+                'snackImage' => $request->file('snackImage')->hashName(),
+            ]);
+            $snack->save();
+        }
+        else
+        {
+            $snack = new Snack([
+                'name' => $request->get('name'),
+                'popularity'=> $request->get('popularity'),
+                'description'=> $request->get('description'),
+            ]);
+            $snack->save();
+        }
         return redirect($snack->path);
     }
 
@@ -48,29 +61,41 @@ class SnackController extends Controller
         return view('snack.edit', compact('snack'));
     }
 
-
     public function update(Request $request, Snack $snack)
     {
         request()->validate([
             'name' => 'required|min:2|max:32',
             'popularity' => 'numeric|min:0|max:10',
+            'description' => 'max:2000',
+            'snackImage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $attributes = $request->all(
-            'name',
-            'popularity',
-            'description',
-            );
-
-        $snack->update($attributes);
-
+        if ($request->hasFile('snackImage'))
+        {
+            $request->file('snackImage')->store('images','public');
+            $snack = new Snack([
+                'name' => $request->get('name'),
+                'popularity'=> $request->get('popularity'),
+                'description'=> $request->get('description'),
+                'snackImage' => $request->file('snackImage')->hashName(),
+            ]);
+            $snack->save();
+        }
+        else
+        {
+            $snack = new Snack([
+                'name' => $request->get('name'),
+                'popularity'=> $request->get('popularity'),
+                'description'=> $request->get('description'),
+            ]);
+            $snack->save();
+        }
         return redirect()->route('index');
     }
 
     public function destroy(Snack $snack)
     {
         $snack->delete();
-
         return redirect()->route('index');
     }
 }

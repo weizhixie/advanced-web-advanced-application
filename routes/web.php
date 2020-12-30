@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\GithubController;
 use App\Http\Controllers\SnackController;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
+
+Route::get('/auth/github/redirect', [GithubController::class, 'redirect'])->name('github.redirect');
+Route::get('/auth/github/callback', [GithubController::class, 'callback'])->name('github.callback');
 
 Route::get('/', [SnackController::class, 'index'])->name('index');
 

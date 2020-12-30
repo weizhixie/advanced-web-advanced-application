@@ -11,5 +11,8 @@ class MailController extends Controller
     public function welcomeMessage($userEmail)
     {
         Mail::to($userEmail)->send(new SnackShopEmail());
+
+        //current user email
+        //Mail::to(auth()->user()->email)->send(new SnackShopEmail());
     }
 }

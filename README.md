@@ -13,12 +13,13 @@ A simple Laravel app to illustrate CRUD operations on a single model.
 
 The following settings are required:
 
+- Modify MAIL_MAILER, MAIL_HOST, MAIL_USERNAME etc. in .env file 
+
 - A database connection, with username and password. 
   MySQL or MariaDB are fine. [XAMPP](https://www.apachefriends.org/index.html)
   recommended.
 
 ## Initialisation
-
 `$ php artisan key:generate`
 
 `$ php artisan migrate:fresh --seed`

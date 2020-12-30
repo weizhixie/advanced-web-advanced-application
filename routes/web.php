@@ -18,4 +18,6 @@ Route::middleware('auth')->group(function (){
 
     Route::get('/snack/{snack}/edit', [SnackController::class, 'edit']);
     Route::patch('/snack/{snack}', [SnackController::class, 'update']);
+
+    //Route::get('/sendMail', [MailController::class, 'welcomeMessage']);
 });

@@ -11,6 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Font Awesome Free -->
     <script src="{{ config('services.fontawesome.url') }}" crossorigin="anonymous"></script>
 
     <!-- Styles -->

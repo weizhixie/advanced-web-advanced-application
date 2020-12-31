@@ -81,7 +81,7 @@
                     </div>
 
                     <div class="flex flex-wrap items-center justify-around">
-                        <a href="{{ route('google.redirect') }}">Sign In With Google <i class="fab fa-google-plus-g"></i></a>
+                        <a href="{{ route('google.redirect') }}"><i class="fab fa-google-plus-g"></i> Sign In With Google</a>
                     </div>
                 </form>
 

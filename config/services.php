@@ -41,4 +41,8 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('GOOGLE_CALLBACK_URL'),
     ],
+
+    'fontawesome' => [
+        'url' => env ('FONT_AWESOME_URL'),
+    ]
 ];

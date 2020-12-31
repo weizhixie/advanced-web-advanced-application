@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\GithubController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\SnackController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,6 +9,9 @@ Auth::routes();
 
 Route::get('/auth/github/redirect', [GithubController::class, 'redirect'])->name('github.redirect');
 Route::get('/auth/github/callback', [GithubController::class, 'callback'])->name('github.callback');
+
+Route::get('/auth/google/redirect', [GoogleController::class, 'redirect'])->name('google.redirect');
+Route::get('/auth/google/callback', [GoogleController::class, 'callback'])->name('google.callback');
 
 Route::get('/', [SnackController::class, 'index'])->name('index');
 

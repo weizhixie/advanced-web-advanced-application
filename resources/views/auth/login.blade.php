@@ -79,6 +79,10 @@
                     <div class="flex flex-wrap items-center justify-around">
                         <a href="{{ route('github.redirect') }}">Sign In With GitHub <i class="fab fa-github"></i></a>
                     </div>
+
+                    <div class="flex flex-wrap items-center justify-around">
+                        <a href="{{ route('google.redirect') }}">Sign In With Google <i class="fab fa-google-plus-g"></i></a>
+                    </div>
                 </form>
 
             </section>

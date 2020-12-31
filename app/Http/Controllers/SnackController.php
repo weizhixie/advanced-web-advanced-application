@@ -31,22 +31,20 @@ class SnackController extends Controller
         if ($request->hasFile('snackImage'))
         {
             $request->file('snackImage')->store('images','public');
-            $snack = new Snack([
+            $snack = Snack::create([
                 'name' => $request->get('name'),
                 'popularity'=> $request->get('popularity'),
                 'description'=> $request->get('description'),
                 'snackImage' => $request->file('snackImage')->hashName(),
             ]);
-            $snack->save();
         }
         else
         {
-            $snack = new Snack([
+            $snack = Snack::create([
                 'name' => $request->get('name'),
                 'popularity'=> $request->get('popularity'),
                 'description'=> $request->get('description'),
             ]);
-            $snack->save();
         }
         return redirect($snack->path);
     }
@@ -73,22 +71,20 @@ class SnackController extends Controller
         if ($request->hasFile('snackImage'))
         {
             $request->file('snackImage')->store('images','public');
-            $snack = new Snack([
+            $snack->update([
                 'name' => $request->get('name'),
                 'popularity'=> $request->get('popularity'),
                 'description'=> $request->get('description'),
                 'snackImage' => $request->file('snackImage')->hashName(),
             ]);
-            $snack->save();
         }
         else
         {
-            $snack = new Snack([
+            $snack->update([
                 'name' => $request->get('name'),
                 'popularity'=> $request->get('popularity'),
                 'description'=> $request->get('description'),
             ]);
-            $snack->save();
         }
         return redirect()->route('index');
     }

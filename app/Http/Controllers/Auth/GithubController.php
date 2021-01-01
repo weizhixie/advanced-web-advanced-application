@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Auth\Events\Registered;
 
 class GithubController extends Controller
 {
@@ -37,13 +38,18 @@ class GithubController extends Controller
             }
             catch (ModelNotFoundException $exception)
             {
+                //TODO add exception for github user who with nickname only and hasn't fill their name on github
                 $user = User::create([
                     'name' => $githubUser->getName(),
                     'email' => $githubUser->getEmail(),
                     'password' => Hash::make(Str::random(32)),
                     'github_id' => $githubUser->getId()
                 ]);
+
                 app(MailController::class)->welcomeMessage($githubUser->getEmail());
+
+                //Send verification mail on socialite login
+                event(new Registered($user));
 
             }
         }

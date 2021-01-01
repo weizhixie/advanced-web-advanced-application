@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MailController;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -46,6 +47,8 @@ class GoogleController extends Controller
                 ]);
                 app(MailController::class)->welcomeMessage($googleUser->getEmail());
 
+                //Send verification mail on socialite login
+                event(new Registered($user));
             }
         }
 

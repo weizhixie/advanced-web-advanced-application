@@ -27,4 +27,7 @@ Route::middleware('auth')->group(function (){
     Route::patch('/snack/{snack}', [SnackController::class, 'update']);
 
     //Route::get('/sendMail', [MailController::class, 'welcomeMessage']);
+
+    Route::view('/profile/edit', 'profile.edit')->name('editProfile');
+    Route::view('/profile/password', 'profile.password')->name('changePassword');
 });

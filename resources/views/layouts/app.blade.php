@@ -36,6 +36,9 @@
                     @else
                         <span>{{ Auth::user()->name }}</span>
 
+                        <a href="{{ route('editProfile') }}">Edit profile</a>
+                        <a href="{{ route('changePassword') }}">Change password</a>
+
                         <div style="float:right;">
                             <img src="{{ auth()->user()->avatar_url.'&d=identicon' }}">
                         </div>

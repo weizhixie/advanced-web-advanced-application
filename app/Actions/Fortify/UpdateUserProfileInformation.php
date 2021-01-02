@@ -39,9 +39,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
             ])->save();
         }
-
-
-        return redirect('/');
     }
 
     /**
@@ -60,6 +57,5 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         ])->save();
 
         $user->sendEmailVerificationNotification();
-        dd('hello');
     }
 }

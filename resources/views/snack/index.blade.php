@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="m-3">
-        @include('snack_')
+        @include('_snack')
     </div>
 
     <span class="flex justify-center">

@@ -7,29 +7,24 @@
                 <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
                     <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                        {{ __('Change Password') }}
+                        {{ __('Reset Password') }}
                     </header>
 
-                    <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('user-password.update') }}">
+                    <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('password.update') }}">
                         @csrf
-                        @method('PUT')
 
-                        @if(session('status') == "password-updated")
-                            <div class="alert flex flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300">
-                                <div class="alert-title font-semibold text-lg text-green-800">
-                                    Password updated successfully
-                                </div>
-                            </div>
-                        @endif
+                        <input type="hidden" name="token" value="{{ request()->token }}">
+
                         <div class="flex flex-wrap">
-                            <label for="current_password" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                                {{ __('Current Password') }}:
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                                {{ __('E-Mail Address') }}:
                             </label>
 
-                            <input id="current_password" type="password"
-                                   class="form-input w-full @error('current_password', 'updatePassword') border-red-500 @enderror" name="current_password" required autofocus>
+                            <input id="email" type="email"
+                                   class="form-input w-full @error('email') border-red-500 @enderror" name="email"
+                                   value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
-                            @error('current_password', 'updatePassword')
+                            @error('email')
                             <p class="text-red-500 text-xs italic mt-4">
                                 {{ $message }}
                             </p>
@@ -42,10 +37,10 @@
                             </label>
 
                             <input id="password" type="password"
-                                   class="form-input w-full @error('password', 'updatePassword') border-red-500 @enderror" name="password"
+                                   class="form-input w-full @error('password') border-red-500 @enderror" name="password"
                                    required autocomplete="new-password">
 
-                            @error('password', 'updatePassword')
+                            @error('password')
                             <p class="text-red-500 text-xs italic mt-4">
                                 {{ $message }}
                             </p>
@@ -64,7 +59,7 @@
                         <div class="flex flex-wrap pb-8 sm:pb-10">
                             <button type="submit"
                                     class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
-                                {{ __('Save') }}
+                                {{ __('Reset Password') }}
                             </button>
                         </div>
                     </form>

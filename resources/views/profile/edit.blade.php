@@ -26,7 +26,7 @@
                                 {{ __('Name') }}:
                             </label>
 
-                            <input id="name" type="text"
+                            <input id="name" type="name"
                                    class="form-input w-full @error('name') border-red-500 @enderror" name="name"
                                    value="{{ old('name') ?? auth()->user()->name }}" required autocomplete="name" autofocus>
 
@@ -53,14 +53,15 @@
                             @enderror
                         </div>
 
-
                         <div class="flex flex-wrap">
                             <button type="submit"
                                     class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
                                 {{ __('Update Profile') }}
                             </button>
+
                         </div>
                     </form>
+
                 </section>
             </div>
         </div>

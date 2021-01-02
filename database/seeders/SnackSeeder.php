@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Snack;
-use Database\Factories\SnackFactory;
 use Illuminate\Database\Seeder;
 
 class SnackSeeder extends Seeder

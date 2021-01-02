@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    public function welcomeMessage(String $userEmail)
+    public function welcomeMessage($userEmail)
     {
         Mail::to($userEmail)->send(new SnackShopEmail());
     }

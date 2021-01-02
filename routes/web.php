@@ -5,8 +5,6 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\SnackController;
 use Illuminate\Support\Facades\Route;
 
-Auth::routes();
-
 Route::get('/auth/github/redirect', [GithubController::class, 'redirect'])->name('github.redirect');
 Route::get('/auth/github/callback', [GithubController::class, 'callback'])->name('github.callback');
 
@@ -28,4 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
 
     Route::view('/profile/edit', 'profile.edit')->name('editProfile');
     Route::view('/profile/password', 'profile.password')->name('changePassword');
+    Route::view('/two_auth_page', 'two-auth-page');
 });
+
+

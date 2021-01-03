@@ -46,7 +46,13 @@
 
             <div class="a-section m-3">
                 <label class="block" for="snackImage">Snack image:</label>
-                <img src="{{ asset('/storage/images/'.$snack->snackImage) }}">
+
+                @if(is_null($snack->snackImage) )
+                    <img class="mx-auto" src="https://images.squarespace-cdn.com/content/v1/56c7a435f850827f409acdf7/1481844308759-V19M8Y0K8C7W0MMEMEFU/ke17ZwdGBToddI8pDm48kKXCml56unlbyP9EmZUaFWdZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwAoL0HpMvt-aUJwb8G9GlCLJEIDcroVSsalC8-PN33UeNTumcscIOppXcINos6j8M/image-asset.jpeg?format=1000w">
+                @else
+                    <img class="mx-auto" src="{{ asset('/storage/images/'.$snack->snackImage) }}">
+                @endif
+
                 <input class="w-3/12 px-4 py-2 @error ('snackImage') border border-red-500 @enderror"
                        type="file" name="snackImage">
                 @error ('snackImage')

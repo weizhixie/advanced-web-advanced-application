@@ -27,7 +27,11 @@
             <h2 class="font-bold mb-4">
                 Snack Image:
             </h2>
-            <img src="{{ asset('/storage/images/'.$snack->snackImage) }}">
+            @if(is_null($snack->snackImage) )
+                <img src="https://images.squarespace-cdn.com/content/v1/56c7a435f850827f409acdf7/1481844308759-V19M8Y0K8C7W0MMEMEFU/ke17ZwdGBToddI8pDm48kKXCml56unlbyP9EmZUaFWdZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwAoL0HpMvt-aUJwb8G9GlCLJEIDcroVSsalC8-PN33UeNTumcscIOppXcINos6j8M/image-asset.jpeg?format=1000w">
+            @else
+                <img src="{{ asset('/storage/images/'.$snack->snackImage) }}">
+            @endif
         </div>
     </div>
 @endsection

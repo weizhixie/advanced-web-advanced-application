@@ -45,4 +45,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return Gravatar::get($this->email);
     }
+
+    public function snacks()
+    {
+        return $this->hasMany(Snack::class);
+    }
 }

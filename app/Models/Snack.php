@@ -14,6 +14,7 @@ class Snack extends Model
         'popularity',
         'description',
         'snackImage',
+        'user_id'
     ];
 
     public function getPathAttribute()
@@ -23,5 +24,10 @@ class Snack extends Model
     public function path()
     {
         return '/snack/' . $this->id;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

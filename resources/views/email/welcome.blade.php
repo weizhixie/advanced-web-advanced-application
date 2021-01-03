@@ -10,6 +10,5 @@
 
 @section('content')
     <h1>Welcome to Snack Shop</h1>
-    <h2>This is test email</h2>
 @endsection
 

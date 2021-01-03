@@ -10,7 +10,7 @@ class SnackController extends Controller
 
     public function index()
     {
-        $snack = Snack::query () -> orderByDesc ('popularity') ->paginate(6);
+        $snack = Snack::query () -> orderByDesc ('popularity') ->paginate(10);
         return view('snack.index', compact('snack'));
     }
 
@@ -28,6 +28,8 @@ class SnackController extends Controller
             'snackImage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        $user_id = auth()->user()->id;
+
         if ($request->hasFile('snackImage'))
         {
             $request->file('snackImage')->store('images','public');
@@ -36,6 +38,7 @@ class SnackController extends Controller
                 'popularity'=> $request->get('popularity'),
                 'description'=> $request->get('description'),
                 'snackImage' => $request->file('snackImage')->hashName(),
+                'user_id' => $user_id,
             ]);
         }
         else
@@ -44,6 +47,7 @@ class SnackController extends Controller
                 'name' => $request->get('name'),
                 'popularity'=> $request->get('popularity'),
                 'description'=> $request->get('description'),
+                'user_id' => $user_id,
             ]);
         }
         return redirect($snack->path);

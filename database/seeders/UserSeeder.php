@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\Snack;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class SnackSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     public function run()
     {
-        Snack::factory(9)->create();
+       User::factory(5)->create();
     }
 }

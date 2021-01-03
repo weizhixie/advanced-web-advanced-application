@@ -23,13 +23,16 @@
                     @endif
                 </td>
                 <td class="border px-4 py-2">
+
                     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" href="{{ $s->path }}">Show</a>
+                    @if(auth()->user()->id == $s->user_id)
                     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" href="{{ $s->path . '/edit' }}">Edit</a>
                     <form class="inline" method="post" action="{{ $s->path }}">
                         @method ('DELETE')
                         @csrf
                         <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" type="submit">Delete</button>
                     </form>
+                    @endif
                 </td>
             </tr>
         @endforeach

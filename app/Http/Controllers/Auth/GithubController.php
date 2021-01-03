@@ -43,7 +43,8 @@ class GithubController extends Controller
                     'name' => $githubUser->getName(),
                     'email' => $githubUser->getEmail(),
                     'password' => Hash::make(Str::random(32)),
-                    'github_id' => $githubUser->getId()
+                    'github_id' => $githubUser->getId(),
+                    'email_verified_at' => now(),
                 ]);
 
                 app(MailController::class)->welcomeMessage($githubUser->getEmail());

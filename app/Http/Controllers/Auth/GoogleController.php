@@ -43,7 +43,8 @@ class GoogleController extends Controller
                     'name' => $googleUser->getName(),
                     'email' => $googleUser->getEmail(),
                     'password' => Hash::make(Str::random(32)),
-                    'google_id' => $googleUser->getId()
+                    'google_id' => $googleUser->getId(),
+                    'email_verified_at' => now(),
                 ]);
                 app(MailController::class)->welcomeMessage($googleUser->getEmail());
 

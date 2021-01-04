@@ -53,15 +53,19 @@
                             @enderror
                         </div>
 
-                        <div class="flex flex-wrap">
+                        <div class="flex flex-wrap pb-8 sm:pb-10">
                             <button type="submit"
                                     class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
                                 {{ __('Update Profile') }}
                             </button>
-
                         </div>
-                    </form>
 
+                        <a href="/">
+                            <button class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4" type="button">
+                                Close
+                            </button>
+                        </a>
+                    </form>
                 </section>
             </div>
         </div>

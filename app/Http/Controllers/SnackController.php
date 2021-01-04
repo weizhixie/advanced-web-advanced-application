@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\Snack;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -109,5 +110,31 @@ class SnackController extends Controller
         {   //remove old image if new image uploaded
             Storage::disk('public')->delete('/images/'.$image_name);
         }
+    }
+
+    public function writeReview(Snack $snack)
+    {
+        return view('snack.review', compact('snack'));
+    }
+
+    public function storeReview(Request $request, Snack $snack)
+    {
+        request()->validate([
+            'title' => 'required|min:2|max:32',
+            'review' => 'required|max:1000',
+            'rating'=> 'required'
+        ]);
+
+        $user_id = auth()->user()->id;
+
+        Review::create([
+            'title' => $request->get('title'),
+            'body'=> $request->get('review'),
+            'rating'=> $request->get('rating'),
+            'user_id' => $user_id,
+            'snack_id' => $snack->id,
+        ]);
+
+        return redirect()->back()->with('message', 'Review successfully created');
     }
 }

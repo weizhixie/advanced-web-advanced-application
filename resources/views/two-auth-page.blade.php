@@ -42,7 +42,7 @@
 
                         <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Disable</button>
                     @else
-                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Enable</button>
+                        <button class="p-5 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Enable</button>
                     @endif
                 </form>
             </section>

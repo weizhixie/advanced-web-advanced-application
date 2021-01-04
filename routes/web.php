@@ -27,6 +27,9 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::view('/profile/edit', 'profile.edit')->name('editProfile');
     Route::view('/profile/password', 'profile.password')->name('changePassword');
     Route::view('/two_auth_page', 'two-auth-page');
+
+    Route::get('/snack/{snack}/writeReview', [SnackController::class, 'writeReview']);
+    Route::post('/snack/{snack}/writeReview', [SnackController::class, 'storeReview']);
 });
 
 

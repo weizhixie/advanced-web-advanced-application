@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Snack;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SnackController extends Controller
 {
@@ -74,6 +75,8 @@ class SnackController extends Controller
 
         if ($request->hasFile('snackImage'))
         {
+            $this->removeOldImage($snack);
+
             $request->file('snackImage')->store('images','public');
             $snack->update([
                 'name' => $request->get('name'),
@@ -97,5 +100,14 @@ class SnackController extends Controller
     {
         $snack->delete();
         return redirect()->route('index');
+    }
+
+    protected function removeOldImage(Snack $snack)
+    {
+        $image_name = $snack->snackImage;
+        if($image_name)
+        {   //remove old image if new image uploaded
+            Storage::disk('public')->delete('/images/'.$image_name);
+        }
     }
 }
